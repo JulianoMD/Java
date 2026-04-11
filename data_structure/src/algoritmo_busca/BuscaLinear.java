@@ -2,7 +2,7 @@ package algoritmo_busca;
 
 import java.util.Scanner;
 
-public class Main {
+public class BuscaLinear {
     public static void main(String[] args) {
         int[] vetor = new int[8];
 
