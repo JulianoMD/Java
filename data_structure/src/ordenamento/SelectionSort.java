@@ -1,4 +1,4 @@
-package algoritmo_busca;
+package ordenamento;
 
 public class SelectionSort {
     public static void main(String[] args) {
