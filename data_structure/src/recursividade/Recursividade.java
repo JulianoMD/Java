@@ -11,6 +11,12 @@ public class Recursividade {
 
         System.out.println("\nSoma");
         System.out.println(somar(0, 0, vetor));
+        
+        int somaIterativa = 0;
+        for (int i = 0; i < vetor.length; i++){
+            somaIterativa += vetor[i];
+        }
+        System.out.println("Soma Iterativa:\n" + somaIterativa);
     }
 
     public static int somar(int soma, int posicao, int[] vetor) {
