@@ -11,12 +11,6 @@ public class NoArvore<TIPO> {
         this.esquerda = null;
     }
 
-    public NoArvore(TIPO novoValor, NoArvore<TIPO> direita){
-        this.valor = novoValor;
-        this.direita = direita;
-        this.esquerda = null;
-    }
-
     public TIPO getValor() {
         return valor;
     }
