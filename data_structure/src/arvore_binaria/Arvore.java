@@ -1,6 +1,6 @@
 package arvore_binaria;
 
-public class Arvore<TIPO extends Comparable> {
+public class Arvore<TIPO extends Comparable<TIPO>> {
 
     private NoArvore<TIPO> raiz;
 
@@ -15,7 +15,7 @@ public class Arvore<TIPO extends Comparable> {
         }else{
             NoArvore<TIPO> atual = this.raiz;
             while(true){
-                if (novoNoArvore.getValor().compareTo(atual.getValor()) == -1){
+                if (novoNoArvore.getValor().compareTo(atual.getValor()) < 0){
                     if (atual.getEsquerda() != null){
                         atual = atual.getEsquerda();
                     }else{
@@ -62,92 +62,88 @@ public class Arvore<TIPO extends Comparable> {
         }
     }
 
-    public boolean remover(TIPO valor){
-        //buscar o elemento na árvore
+   public boolean remover(TIPO valor) {
+
         NoArvore<TIPO> atual = this.raiz;
         NoArvore<TIPO> paiAtual = null;
-        while(atual != null){
-            if (atual.getValor().equals(valor)){
+
+        // busca o node a ser removido e seu pai
+        while (atual != null) {
+            if (atual.getValor().equals(valor)) {
                 break;
-            }else if (valor.compareTo(atual.getValor()) == -1){ //valor procurado é menor que o atual
-                paiAtual = atual;
+            }
+            paiAtual = atual;
+            if (valor.compareTo(atual.getValor()) < 0) {
                 atual = atual.getEsquerda();
-            }else{
-                paiAtual = atual;
+            } else {
                 atual = atual.getDireita();
             }
         }
-        //verifica se existe o elemento
-        if (atual != null){
 
-            //elemento tem 2 filhos ou elemento tem somente filho à direita
-            if (atual.getDireita() != null){
-
-                NoArvore<TIPO> substituto = atual.getDireita();
-                NoArvore<TIPO> paiSubstituto = atual;
-                while(substituto.getEsquerda() != null){
-                    paiSubstituto = substituto;
-                    substituto = substituto.getEsquerda();
-                }
-                substituto.setEsquerda(atual.getEsquerda());
-                if (paiAtual != null){
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
-                        paiAtual.setEsquerda(substituto);
-                    }else{
-                        paiAtual.setDireita(substituto);
-                    }
-                }else{ //se não tem paiAtual, então é a raiz
-                    this.raiz = substituto;
-                    paiSubstituto.setEsquerda(null);
-                    this.raiz.setDireita(paiSubstituto);
-                    this.raiz.setEsquerda(atual.getEsquerda());
-                }
-
-                //removeu o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){ //substituto < paiSubstituto
-                    paiSubstituto.setEsquerda(null);
-                }else{
-                    paiSubstituto.setDireita(null);
-                }
-
-            }else if (atual.getEsquerda() != null){ //tem filho só à esquerda
-                NoArvore<TIPO> substituto = atual.getEsquerda();
-                NoArvore<TIPO> paiSubstituto = atual;
-                while(substituto.getDireita() != null){
-                    paiSubstituto = substituto;
-                    substituto = substituto.getDireita();
-                }
-                if (paiAtual != null){
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
-                        paiAtual.setEsquerda(substituto);
-                    }else{
-                        paiAtual.setDireita(substituto);
-                    }
-                }else{ //se for a raiz
-                    this.raiz = substituto;
-                }
-
-                //removeu o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){ //substituto < paiSubstituto
-                    paiSubstituto.setEsquerda(null);
-                }else{
-                    paiSubstituto.setDireita(null);
-                }
-            }else{ //não tem filho
-                if (paiAtual != null){
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
-                        paiAtual.setEsquerda(null);
-                    }else{
-                        paiAtual.setDireita(null);
-                    }
-                }else{ //é a raiz
-                    this.raiz = null;
-                }
-            }
-
-            return true;
-        }else{
+        // verifica se o node existe
+        if (atual == null) {
             return false;
         }
+
+        // caso 1: node com 2 filhos (ou pelo menos o da direita) ---
+        if (atual.getDireita() != null) {
+            NoArvore<TIPO> substituto = atual.getDireita();
+            NoArvore<TIPO> paiSubstituto = atual;
+
+            // busca o menor na esquerda da sub arvore direita
+            while (substituto.getEsquerda() != null) {
+                paiSubstituto = substituto;
+                substituto = substituto.getEsquerda();
+            }
+
+            // Se o substituto veio de longe, reorganiza as mãos
+            if (paiSubstituto != atual) {
+                // O pai do substituto adota os netos = filhos da direita do substituto
+                paiSubstituto.setEsquerda(substituto.getDireita());
+                // O substituto assume o controle de toda a ala direita do atual
+                substituto.setDireita(atual.getDireita());
+            }
+
+            // o substituto assume o node a esquerda do atual
+            substituto.setEsquerda(atual.getEsquerda());
+
+            // conecta o substituto ao pai do node removido (ou vira a nova raiz)
+            if (paiAtual != null) {
+                if (paiAtual.getEsquerda() == atual) {
+                    paiAtual.setEsquerda(substituto);
+                } else {
+                    paiAtual.setDireita(substituto);
+                }
+            } else {
+                this.raiz = substituto;
+            }
+
+        // node com apenas filho a esquerda
+        } else if (atual.getEsquerda() != null) {
+            NoArvore<TIPO> substituto = atual.getEsquerda();
+            if (paiAtual != null) {
+                if (paiAtual.getEsquerda() == atual) {
+                    paiAtual.setEsquerda(substituto);
+                } else {
+                    paiAtual.setDireita(substituto);
+                }
+            } else {
+                this.raiz = substituto;
+            }
+
+        // node folha = sem filhos apenas remocao
+        } else {
+            if (paiAtual != null) {
+                if (paiAtual.getEsquerda() == atual) {
+                    paiAtual.setEsquerda(null);
+                } else {
+                    paiAtual.setDireita(null);
+                }
+            } else {
+                this.raiz = null;
+            }
+        }
+
+        return true;
     }
 }
