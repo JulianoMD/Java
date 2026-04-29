@@ -4,8 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
       <module fileurl="file://$PROJECT_DIR$/CEV_Poo/Poo_CeV.iml" filepath="$PROJECT_DIR$/CEV_Poo/Poo_CeV.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Poo_aula_13_04/Poo_aula_13_04.iml" filepath="$PROJECT_DIR$/Poo_aula_13_04/Poo_aula_13_04.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Poo_aula_30_03/Poo_aula_30_03.iml" filepath="$PROJECT_DIR$/Poo_aula_30_03/Poo_aula_30_03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Poo_aula/Poo_aula.iml" filepath="$PROJECT_DIR$/Poo_aula/Poo_aula.iml" />
       <module fileurl="file://$PROJECT_DIR$/data_structure/data_structure.iml" filepath="$PROJECT_DIR$/data_structure/data_structure.iml" />
     </modules>
   </component>
