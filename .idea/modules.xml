@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CEV_Poo/Poo_CeV.iml" filepath="$PROJECT_DIR$/CEV_Poo/Poo_CeV.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Poo_aula/Poo_aula.iml" filepath="$PROJECT_DIR$/Poo_aula/Poo_aula.iml" />
       <module fileurl="file://$PROJECT_DIR$/data_structure/data_structure.iml" filepath="$PROJECT_DIR$/data_structure/data_structure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poo_CeV/poo_CeV.iml" filepath="$PROJECT_DIR$/poo_CeV/poo_CeV.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poo_Fabio_Senac/poo_Fabio_Senac.iml" filepath="$PROJECT_DIR$/poo_Fabio_Senac/poo_Fabio_Senac.iml" />
     </modules>
   </component>
 </project>

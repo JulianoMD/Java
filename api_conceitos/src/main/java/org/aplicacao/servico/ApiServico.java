@@ -16,7 +16,7 @@ public class ApiServico {
     public EnderecoDto getEndereco(String cep) throws IOException, InterruptedException {
         try {
             HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("viacep.com.br/ws/"+ cep + "/json/")).build();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://viacep.com.br/ws/"+ cep + "/json/")).build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             ObjectMapper mapper = new ObjectMapper();

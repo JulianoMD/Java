@@ -15,7 +15,7 @@ public class Arvore<TIPO extends Comparable<TIPO>> {
         }else{
             NoArvore<TIPO> atual = this.raiz;
             while(true){
-                if (novoNoArvore.getValor().compareTo(atual.getValor()) < 0){
+                if (novoNoArvore.getValor().compareTo(atual.getValor()) < 0){ // se for menor que o valor do nó atual
                     if (atual.getEsquerda() != null){
                         atual = atual.getEsquerda();
                     }else{

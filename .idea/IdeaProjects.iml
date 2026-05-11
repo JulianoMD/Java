@@ -9,6 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/exercises" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Poo_aula_16_03" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engatinhando_em_java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/api_conceitos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gerenciador_filmes" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="25" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
